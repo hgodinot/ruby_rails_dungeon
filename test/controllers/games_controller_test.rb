@@ -12,7 +12,7 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get games_new_url
+    get games_new_path
     assert_response :success
     assert_select "title", "New Game | #{@base_title}"
   end
