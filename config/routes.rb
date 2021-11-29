@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  get 'application/hello'
+  root 'games#home'
+  get  'games/new'
 end
