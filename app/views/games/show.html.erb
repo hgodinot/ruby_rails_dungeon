@@ -1,0 +1,9 @@
+This is a game
+
+<ul>
+  <li>
+    <%= link_to "Delete Game", game_path(@game),
+        method: :delete,
+        data: { confirm: "Are you sure ?" } %>
+  </li>
+</ul>

@@ -1,3 +1,8 @@
 <% provide(:title, "New Game") %>
-<h1>Games#new</h1>
-<p>Find me in app/views/games/new.html.erb</p>
+<p>Start an exciting adventure!</p>
+
+<%= form_with model: @game do |form| %>
+  <div>
+    <%= form.submit "Start New Game" %>
+  </div>
+<% end %>

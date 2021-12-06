@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   
-  root to: 'games#home'
+  root to: 'games#index'
 
-  #resources :games, only: %i[new] do
-  resources :games do
-    collection do
-      get 'home'
-    end
-  end
+  #resources :users do
+    resources :games#, only: %i[new, index] do
+  #end
+  
 end
