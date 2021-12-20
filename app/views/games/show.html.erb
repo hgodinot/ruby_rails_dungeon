@@ -1,9 +1,21 @@
-This is a game
 
-<ul>
-  <li>
-    <%= link_to "Delete Game", game_path(@game),
-        method: :delete,
-        data: { confirm: "Are you sure ?" } %>
-  </li>
-</ul>
+  <% if @game.start %>
+    <%= render "presentation", object: @game %>
+
+  <% else %>
+    <%= render "title" %>
+    <%= render "board", object: @board %>
+    <%= render "stats", object: @game.hero %>
+  
+    <%= render "messages", object: @game.messages %>
+
+    <% if @game.over %>
+      <%= render "game_over", object: @game %>
+    <% elsif @game.choice %>
+      <%= render "choices", object: @game %>
+    <% else %>
+      <%= render "commands", object: @commands %>
+    <% end %>
+  <% end %>
+
+

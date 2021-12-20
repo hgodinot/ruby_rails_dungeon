@@ -10,13 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_06_090924) do
+ActiveRecord::Schema.define(version: 2021_12_11_093849) do
 
   create_table "games", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.boolean "over"
+    t.boolean "start"
+    t.string "choice"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
+  create_table "heros", force: :cascade do |t|
+    t.boolean "alive"
+    t.integer "health"
+    t.integer "strength"
+    t.integer "defense"
+    t.integer "experience"
+    t.integer "room_number"
+    t.integer "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_heros_on_game_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "body"
+    t.integer "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_messages_on_game_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "encounter"
+    t.boolean "visited"
+    t.integer "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_rooms_on_game_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,4 +66,7 @@ ActiveRecord::Schema.define(version: 2021_12_06_090924) do
   end
 
   add_foreign_key "games", "users"
+  add_foreign_key "heros", "games"
+  add_foreign_key "messages", "games"
+  add_foreign_key "rooms", "games"
 end

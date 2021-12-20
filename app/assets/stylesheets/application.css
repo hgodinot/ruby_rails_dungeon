@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+ @font-face {
+  font-family: 'Press Start 2P';
+  src: url('PressStart2P-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}

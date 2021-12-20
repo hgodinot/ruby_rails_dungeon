@@ -1,0 +1,11 @@
+<ul>
+  <% @game.messages.each do |message| %>
+    <% if message.body == "br" %>
+      <br>
+    <% else %>
+      <li>
+        <p class="dungeon animation"><%= message.body %></p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

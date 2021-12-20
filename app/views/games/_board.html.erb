@@ -1,0 +1,9 @@
+<table class="table board-table emoticone">
+    <% @board.each_slice(4) do |line| %>
+      <tr>
+        <% line.each do |symbol| %>
+          <td><div class="content"><%= symbol %></div></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>

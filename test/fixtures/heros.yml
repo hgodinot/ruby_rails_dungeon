@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  alive: true
+  health: 1
+  strength: 1
+  defense: 1
+  experience: 1
+  room_number: 1
+  game: one
+
+two:
+  alive: true
+  health: 1
+  strength: 1
+  defense: 1
+  experience: 1
+  room_number: 17
+  game: two

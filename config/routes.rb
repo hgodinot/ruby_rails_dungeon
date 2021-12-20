@@ -3,8 +3,15 @@ Rails.application.routes.draw do
   
   root to: 'games#index'
 
-  #resources :users do
-    resources :games#, only: %i[new, index] do
-  #end
-  
+  resources :games, only: %i[index show create destroy update] do
+    member do
+      patch :play_again
+      patch :choose
+      patch :start
+    end
+  end
+
+  get '*path' => redirect('/')
 end
+
+

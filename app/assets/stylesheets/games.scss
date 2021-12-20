@@ -1,3 +1,56 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* Lists */
+
+ul li {
+  list-style-type: none;
+}
+
+/* Animations */
+
+.animation {
+  animation: 1.5s fadeIn;
+  animation-fill-mode: forwards;
+
+  visibility: hidden;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* Emoticone class */
+.emoticone {
+  font-size: x-large;
+}
+
+/* Board table */
+.board-table {
+  display: inline-table;
+  margin: 2em 5em 2em 5em;
+  border: 3px solid black;
+  border-collapse: collapse;
+  width: 33%;
+  background-color: whitesmoke;
+  td {
+    border: 1px dashed black;
+    width: 25%;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+/* Commands */
+.commands {
+  display: inline-table;
+  text-align: center;
+}

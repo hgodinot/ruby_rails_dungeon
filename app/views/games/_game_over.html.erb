@@ -1,0 +1,5 @@
+<%= form_for @game, url: {action: "play_again"} do |form| %>
+  <div>
+    <p class="dungeon"><%= form.submit "Play Again" %></p>
+  </div>
+<% end %>

@@ -1,7 +1,9 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  user: one
+  user: user_001
+  over: false
+  start: true
 
 two:
-  user: two
+  user: user_001
+  over: false
+  start: true

@@ -1,20 +1,8 @@
-<% if current_user.present? %>
-  <h1>Welcome, <%= current_user.name %></h1>
-  <% if @games.size > 0 %>
-    <ul>
-      <% @games.each do |game| %>
-        <li>
-          <p>Game <%= game.id %> </p>
-        </li>
-      <% end %>
-    </ul>
+<div class="dungeon">
+  <% if current_user.present? %>
+    <h1 >Welcome, <%= current_user.name %></h1>
+    <%= render "games", object: @games %>
   <% else %>
-    <p>Start a new game and live an exciting adventure !</p>
+    <h1>Welcome. Please <%= link_to "sign-in", new_user_session_path %> to play.</h1>
   <% end %>
-
-<% else %>
-  <h1>Welcome, stranger </h1>
-  <p><a href="/users/sign_in">Sign in</a> to play!</p>
-
-<% end %>
-<p>Find me in app/views/home/index.html.erb</p>
+</div>

@@ -1,0 +1,19 @@
+<div class="dungeon animation">  
+  <p>Welcome to the epic world or Ruby & Rails Dungeon 💎🚊🏰. It's like Dungeons & Dragons 🐲🏰, but with bad binary jokes 🤓.</p>
+  <br>
+  <p>You (🦸) are a young Ruby dev, looking for an adventure. You must fight your archnemesis (👹), but you probably should train a bit before that ✊.</p>
+  <br>
+
+  <p>In this dungeon, you can encounter:</p>
+  <p>- 🐺 : Non Ruby problems (solve them to gain in experience)</p>
+  <p>- 💰 : Stock options (sell them before the next recession)</p>
+  <p>- 🔮 : Choices (choose wisely)</p>
+  <br>
+
+  <p>Explore the dungeon, win XP, defeat the evil Go Lord, and, most of all, Don't Repeat Yourself ❌!</p>
+  <br>
+
+  <%= form_for @game, url: {action: "start"} do |form| %>
+    <p><%= form.submit "Start" %></p>
+  <% end %>
+</div>

@@ -1,0 +1,29 @@
+ <div class="dungeon">
+  <% if @games.size < 3 %>
+    <p>Start a 
+      <%= link_to "new game", games_path, method: :post %>
+    and live an exciting adventure!</p>
+  <% else %>
+    <p>No more free slots. You must delete a game before you start a new one.</p>
+  <% end %>
+  
+  <% if @games.size > 0 %>
+    <p>Or load a saved game:</p>
+    <ul>
+      <% @games.each do |game| %>
+        <li><p>Last played on <%= game.updated_at.strftime("%F at %H:%M") %></p>
+          <ul>
+            <li>
+              <p><%= link_to "Play", game %></p>
+            </li>
+            <li>
+              <p><%= link_to "Delete", game,
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %></p>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
