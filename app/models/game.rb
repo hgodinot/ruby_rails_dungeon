@@ -54,7 +54,7 @@ class Game < ApplicationRecord
 
   def generate_board
     board_array = []
-    rooms.each do |room|
+    sorted_board(rooms).each do |room|
       board_array << symbol(room)
     end
     board_array
@@ -62,7 +62,7 @@ class Game < ApplicationRecord
 
   def avalaible_commands
     commands = {}
-    hero_room_base_16 = hero.room_number - rooms.first.id + 1
+    hero_room_base_16 = hero.room_number -  sorted_board(rooms).first.id + 1
 
     commands[:up]    = !UPPER_WALL.include?(hero_room_base_16)
     commands[:right] = !RIGHT_WALL.include?(hero_room_base_16)
@@ -107,6 +107,10 @@ class Game < ApplicationRecord
   end
 
   private
+
+    def sorted_board(rooms)
+      rooms.sort_by { |room| room.id }
+    end
 
     def max_games_number
       return if user.games.count < 3
