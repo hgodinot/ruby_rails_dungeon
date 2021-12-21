@@ -8,7 +8,7 @@
     <%= render "stats", object: @game.hero %>
     <%= render "debug", object: @game %>
   
-    <%= render "messages", object: @game.messages %>
+    <%# Line to debug in prod if problems with the board <%= render "messages", object: @game.messages %>
 
     <% if @game.over %>
       <%= render "game_over", object: @game %>
