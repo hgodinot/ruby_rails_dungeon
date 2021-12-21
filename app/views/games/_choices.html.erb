@@ -1,7 +1,7 @@
 <%= form_for @game, url: {action: "choose"} do |form| %>
  <% (1..3).each do |idx| %>
     <div>
-      <p class="dungeon"><%= form.submit "Choice #{idx}" %></p>
+      <p class="dungeon"><%= form.submit "CHOICE #{idx}" %></p>
     </div>
   <% end %>
 <% end %>

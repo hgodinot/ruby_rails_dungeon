@@ -4,8 +4,10 @@
 
 /* Lists */
 
-ul li {
-  list-style-type: none;
+ul {
+  li {
+    list-style-type: none;
+  }
 }
 
 /* Animations */
@@ -51,7 +53,21 @@ ul li {
 
 /* Commands */
 .commands {
-  display: inline-table;
   text-align: center;
-  padding-right: 20px;
+  .command {
+    display: inline-table;
+    text-align: center;
+    padding-right: 20px;
+    font-size: 1.1em;
+  }
+}
+
+/* Table Titles */
+.table_title {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.messages {
+  text-align: center;
 }

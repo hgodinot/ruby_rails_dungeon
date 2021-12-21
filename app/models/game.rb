@@ -183,7 +183,7 @@ class Game < ApplicationRecord
           new_health = @hero.health - num
           @hero.update(health: new_health)
 
-          messages = ["You already visited this room.", "A Ruby Dev should know better: Don't Repeat Yourself.", "Ashamed, you lost #{num} health points 🩸."]
+          messages = ["You already visited this room.", "A Ruby Dev should know better: Don't Repeat Yourself!", "Ashamed, you lost #{num} health points 🩸."]
 
           add_message(messages, true)
         end

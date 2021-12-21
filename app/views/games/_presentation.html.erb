@@ -14,6 +14,9 @@
   <br>
 
   <%= form_for @game, url: {action: "start"} do |form| %>
-    <p><%= form.submit "Start" %></p>
+    <div class="commands">
+      <br>
+      <p class="command"><%= form.submit "START" %></p>
+    </div>
   <% end %>
 </div>

@@ -1,9 +1,11 @@
 <%= form_with model: @game do |form| %>
-  <% @commands.each do |key, boolean| %>
-    <% if boolean %>
-      <div class="commands">
-        <p class="dungeon command"><%= form.submit "#{key.to_s.upcase}" %></p>
-      </div>
+  <div class="commands">
+    <% @commands.each do |key, boolean| %>
+      <% if boolean %>
+        <div class="command">
+          <p class="dungeon command"><%= form.submit "#{key.to_s.upcase}" %></p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 <% end %>
