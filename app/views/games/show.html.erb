@@ -6,9 +6,9 @@
     <%= render "title" %>
     <%= render "board", object: @board %>
     <%= render "stats", object: @game.hero %>
-    <%= render "debug", object: @game %>
+    <%# Line to debug in prod if problems with the board <%= render "debug", object: @game %>
   
-    <%# Line to debug in prod if problems with the board <%= render "messages", object: @game.messages %>
+    <%= render "messages", object: @game.messages %>
 
     <% if @game.over %>
       <%= render "game_over", object: @game %>
