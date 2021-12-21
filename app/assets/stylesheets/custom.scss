@@ -53,32 +53,15 @@ p {
 /* footer */
 
 footer {
+  text-align: center;
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
-  color: #777;
+  color: black;
 }
 
 footer a {
-  color: #555;
-}
-
-footer a:hover {
-  color: #222;
-}
-
-footer small {
-  float: left;
-}
-
-footer ul {
-  float: right;
-  list-style: none;
-}
-
-footer ul li {
-  float: left;
-  margin-left: 15px;
+  color: blue;
 }
 
 /* Dungeon class */
