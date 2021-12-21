@@ -18,8 +18,7 @@ class GamesController < ApplicationController
     @game = current_user.games.new(over: false, start: new) # No pre-start screen if game created with the "Play Again" button.
     if current_user.games.count < 3 && @game.save
       flash[:success] = "And so your adventure begins. May you critical hit your way to the end!"
-      @game.create_rooms
-      @game.create_hero
+      @game.start_setup
       redirect_to @game
     else
       flash[:danger] = "No more than 3 games."

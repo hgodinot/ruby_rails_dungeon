@@ -41,15 +41,11 @@ class Game < ApplicationRecord
                   consequence: { success: { health: 10 }, failure: { strength: -3} }
                 }
               }
-
-  def create_rooms
-    rooms_content = (MONSTERS + BOSS + CHOICE + TREASURES + EMPTY).shuffle # Shuffle 15 non starting rooms
-    rooms_content.each { |content| rooms.create(encounter: content, visited: false) } # Create them
-    rooms.create(encounter: "Hero", visited: false) # Populate last room with hero
-  end
-
-  def create_hero
-    self.hero = Hero.create(alive: true, health: 50, strength: 10, defense: 5, experience: 5, room_number: rooms.last.id)
+  
+  def start_setup
+    create_rooms
+    create_hero
+    Event.new(self, nil).add_message("Move to start your adventure.")
   end
 
   def generate_board
@@ -85,7 +81,6 @@ class Game < ApplicationRecord
 
   def start_adventure
     update(start: false)
-    Event.new(self, nil).add_message("Move to start your adventure.")
   end
 
   def clean_hero_room
@@ -107,6 +102,15 @@ class Game < ApplicationRecord
   end
 
   private
+    def create_rooms
+      rooms_content = (MONSTERS + BOSS + CHOICE + TREASURES + EMPTY).shuffle # Shuffle 15 non starting rooms
+      rooms_content.each { |content| rooms.create(encounter: content, visited: false) } # Create them
+      rooms.create(encounter: "Hero", visited: false) # Populate last room with hero
+    end
+
+    def create_hero
+      self.hero = Hero.create(alive: true, health: 50, strength: 10, defense: 5, experience: 5, room_number: rooms.last.id)
+    end
 
     def sorted_board(rooms)
       rooms.sort_by { |room| room.id }

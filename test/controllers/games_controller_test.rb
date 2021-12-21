@@ -2,7 +2,7 @@ require "test_helper"
 
 class GamesControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @base_title = "💎 Ruby & Rails Dungeon 🏰"
+    @base_title = "Ruby & Rails Dungeon"
     get '/users/sign_in'
     sign_in users(:user_001)
     post user_session_url

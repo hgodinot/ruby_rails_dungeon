@@ -2,9 +2,7 @@
   <div class="commands">
     <% @commands.each do |key, boolean| %>
       <% if boolean %>
-        <div class="command">
-          <p class="dungeon command"><%= form.submit "#{key.to_s.upcase}" %></p>
-        </div>
+        <p class="dungeon command"><%= form.submit "#{key.to_s.upcase}" %></p>
       <% end %>
     <% end %>
   </div>
