@@ -8,9 +8,11 @@
   <% end %>
   
   <% if @games.size > 0 %>
+    <br>
     <p>Or load a saved game:</p>
     <ul>
       <% @games.each do |game| %>
+        <br>
         <li><p>Last played on <%= game.updated_at.strftime("%F at %H:%M") %></p>
           <ul>
             <li>

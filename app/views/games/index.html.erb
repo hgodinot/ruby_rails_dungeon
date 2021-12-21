@@ -1,6 +1,7 @@
 <div class="dungeon">
   <% if current_user.present? %>
-    <h1 >Welcome, <%= current_user.name %></h1>
+    <h1>Welcome, <%= current_user.name %></h1>
+    <br>
     <%= render "games", object: @games %>
   <% else %>
     <h1>Welcome. Please <%= link_to "sign-in", new_user_session_path %> to play.</h1>

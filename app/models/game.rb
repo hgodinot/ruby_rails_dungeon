@@ -65,9 +65,10 @@ class Game < ApplicationRecord
     hero_room_base_16 = hero.room_number - rooms.first.id + 1
 
     commands[:up]    = !UPPER_WALL.include?(hero_room_base_16)
+    commands[:right] = !RIGHT_WALL.include?(hero_room_base_16)
     commands[:down]  = !LOWER_WALL.include?(hero_room_base_16)
     commands[:left]  = !LEFT_WALL.include?(hero_room_base_16)
-    commands[:right] = !RIGHT_WALL.include?(hero_room_base_16)
+    
 
     commands
   end
