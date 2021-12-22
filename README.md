@@ -1,108 +1,130 @@
-<p align="center">
-  <img src="/screenshots/title.png">
-</p>
+<span style="background-color: green">
+  <p align="center">
+    <img src="app/assets/images/title.png">
+  </p>
 
-# Ruby & Rails Dungeon App
+  <br><br>
+  # Ruby & Rails Dungeon App
 
-[![Build Status](https://travis-ci.com/jsiny/deep_sea_adventure.svg?branch=master)](https://travis-ci.com/jsiny/deep_sea_adventure) [![Coverage Status](https://coveralls.io/repos/github/jsiny/deep_sea_adventure/badge.svg?branch=master)](https://coveralls.io/github/jsiny/deep_sea_adventure?branch=master)
+  This [application](https://ruby-rails-dungeon-app.herokuapp.com/) is a tribute to old school hack and slash dungeon crawler video games.
 
-This [website](https://ruby-and-rails-dungeon.herokuapp.com/) is a portfolio app, as
-well as an homage to old school hack and slash dungeon crawler video games.
+  Its goal is to provide players with a fun and fast game, but, most of all to challenge myself, and learn Rails the hard way. It's a Rails adaptation of RPG Command Line Interface games, with a full database, registered users, and several models, each with their unique attributes and specificities.
+  <br><br>
+  ## How To Play
 
-Its goal is to provide players a **reliable way to compute the oxygen decrease**
-during a round. It's meant to be used side by side with the board game,
-either on a mobile or computer.
+  The game start with a title card that explains the rules.
 
-## Motivation
+  <p align="center">
+    <img src="app/assets/images/presentation-card.png">
+  </p>
+  <br>
 
-I like board games, but dislike arguing with friends over a messy score count.
+  Once you click START, you access the game screen, with several elements.
 
-In Deep Sea Adventure, players dive into the deep ocean looking for 
-treasures. All divers share the **same oxygen tank**, and each treasure picked
-up weighs down the diver and increases its oxygen intake. All divers must be
-back into the submarine before the oxygen tank becomes empty.
-[More on the game's rules](https://oinkgms.com/en/deep-sea-adventure)
+  You'll play on the **board**, which is a 4 x 4 table. It is generated from the room objects every time the page is actualized, either through a request (that modifies it) or a classic refresh.
 
-It is therefore critical to accurately monitor the available oxygen.
+  <p align="center">
+    <img src="app/assets/images/board-only.png">
+  </p>
+  <br>
 
-However, experience shows that it can be difficult to accurately compute the 
-available oxygen in a quick game setup, and that arguments over which player
-should have drowned tend to ruin the fun. This is where this Scoring App comes
-handy! 
+  As you move, encounters will take place then their icon will disappear. Every room the hero has visited will be marked as "visited" through an attribute, and will have a red cross icon. Going to an already visited room will have consequences (see message bellow).
 
-## How To Use
+  <p align="center">
+    <img src="app/assets/images/board-red-cross.png">
+  </p>
+  <br>
 
-### 1. Create New Game
+  Next to the board are the hero's **stats**, that will evolve through the games. Once you reach 0 health points, you die.
 
-<p align="center">
-  <img src="/screenshots/new_game.png">
-</p>
+  <p align="center">
+    <img src="app/assets/images/stats.png">
+  </p>
+  <br>
 
-### 2. Record action for each player
+  Below the board and stats tables, are the game messages. They are created through messages objects, that are related to a specific game. Once a message has been output, and the player has chosen his next action (move or choice), it will be automatically deleted.
 
-<p align="center">
-  <img src="/screenshots/player_turn.png">
-</p>
+  <p align="center">
+    <img src="app/assets/images/messages.png">
+  </p>
+  <br>
 
-A player can choose to keep diving or go back to the surface. She can also
-add a treasure, leave one of hers, or do nothing.
+  The user interacts with the game thanks to form buttons, that transmit their choices and moves to the game controller. 
 
-It's now easy to follow the oxygen supply thanks to the progress bar at the
-bottom of the page 🌈
+  Depending on the board position and adjacent walls, the player  can choose between 2 to 4 [directions](https://github.com/hgodinot/ruby_rails_dungeon/blob/main/app/views/games/_commands.html.erb).
 
-### 3. At the end of the round, record the score
+  <p align="center">
+    <img src="app/assets/images/4-directions.png">
+  </p>
+  <br>
 
-<p align="center">
-  <img src="/screenshots/score.png">
-</p>
+  [Choices](https://github.com/hgodinot/ruby_rails_dungeon/blob/main/app/views/games/_choices.html.erb) are a specific kind of encounter. They involve 3 propositions, and some bad dev jokes.
 
-### 4. After 3 rounds, crown a winner!
+  <p align="center">
+    <img src="app/assets/images/choices.png">
+  </p>
+  <br>
 
-<p align="center">
-  <img src="/screenshots/end.png">
-</p>
+  I used a custom class for all elements of the game, giving them access to both the retro gaming [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) font, and fade-in transition animation.
 
-## Tech
+  The game will end if you defeat the boss, or die at any point. Be it a victory or a defeat, you can then choose to play again. It will automatically delete the current game, and either redirect you to the home page if you've got other saved games, or create and start a new game for you if you don't.
 
-Built with **Ruby**, the framework **[Sinatra](http://sinatrarb.com/)** and **Bootstrap**.
-This project uses sessions and cookies storage in order to play a game without
-logging in users. 
+  <p align="center">
+    <img src="app/assets/images/board-end.png">
+  </p>
+  <br><br>
 
-## Setting it up on your own machine
+  ## Tech Stack
 
-*Note: You'll need to have `ruby` version `2.6.5` installed on your computer.*
+  I developed this app in Ruby, as I’ve spent the past year learning programming mainly through this language. I always loved Ruby's object-oriented design, and that's what I used there, but with a twist: I used Rails as a framework, and chose to work with registered users through the [Devise gem](https://github.com/heartcombo/devise), and a  [database](https://github.com/hgodinot/ruby_rails_dungeon/blob/main/db/schema.rb).
 
-Clone the repository:
+  <br>
 
-```unix
-git clone https://github.com/jsiny/deep_sea_adventure.git
-```
+  The game is hosted on an EU server by Heroku, so US users might have some latency.
 
-Install the required gems:
+  <br>
 
-```unix
-bundle install
-```
+  This game being mostly a toy app, I disabled devise email verifications and confirmations. So, you can use a fake email for the account creation, as long as it looks like a legit one.
 
-Run the app locally (on `localhost:4567`) with the following command:
+  <p align="center">
+    <img src="app/assets/images/sign-in.png">
+  </p>
+  <br><br>
 
-```unix
-ruby deep_sea.rb
-```
+  ## Setting it up on your own machine
 
-Run the tests suite:
+  You can play the [online version](https://ruby-rails-dungeon-app.herokuapp.com/) hosted by Heroku, or run the game locally.
 
-```unix
-rake test
-```
+  *Note: You'll need to have `ruby` version `2.7.4` and `rails` version `6.1.4.1` installed on your computer.*
 
-## Possible Future Improvements
+  Clone the repository:
 
-* Add some client-side validations and error messages
-* Allow users to edit a previously submitted action
-* Allow users to customize the number of rounds for a game
-* Allow users to log in and save their games for future references
+  ```unix
+  git clone https://github.com/hgodinot/ruby_rails_dungeon.git
+  ```
 
-## Credit
+  Install the required gems:
 
-This project is the work of [Juliette Sinibardy](https://jsinibardy.com)
+  ```unix
+  bundle install
+  ```
+
+  Run the app locally (on `localhost:4567`) with the following command:
+
+  ```unix
+  rails server
+  ```
+
+  Run the tests suite:
+
+  ```unix
+  rails test
+  ```
+
+  Enjoy the game!
+  <br><br>
+
+  ## Credit
+
+  This project is the work of [Hervé Godinot](https://www.linkedin.com/in/hervegodinot/)
+</span>
