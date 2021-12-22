@@ -3,7 +3,7 @@
     <img src="app/assets/images/title.png">
   </p>
 
-  <br><br>
+  <br>
   # Ruby & Rails Dungeon App
 
   This [application](https://ruby-rails-dungeon-app.herokuapp.com/) is a tribute to old school hack and slash dungeon crawler video games.
