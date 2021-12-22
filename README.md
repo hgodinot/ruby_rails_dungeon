@@ -15,6 +15,8 @@
 
   ## How To Play
 
+  First create an account (email can be fake) or log in. Then create a new game or load an existing one.
+
   The game start with a title card that explains the rules.
 
   <p align="center">
