@@ -25,16 +25,16 @@ class Game < ApplicationRecord
                victory: ["Congratulations, you won.", "These languages were no match for your Ruby sword, and your Rails armour!"],
                defeat: ["Gravely wounded, you have to retreat.", "But you know you'll be back. Hasta la vista babe."] }
   SCENARII = { bridge: {
-                  description: ["You're facing the Bridge of Death 💀.", "A blind guardian asks you: 'There are 10 types of people.", "Which are you ?'"],
-                  choices: ["Those who get ternary", "Those who don't", "Those who thought this was going to be a binary joke"],
+                  description: ["You're facing the Bridge of Death 💀.", "A blind guardian asks you: 'There are 10 types of people.'", "'Which are you ?'"],
+                  choices: ["Those who get ternary.", "Those who don't.", "Those who thought this was going to be a binary joke."],
                   positive_msg: ["You've crossed the bridge.", "The guardian, happy with your answer, gives you a kettlebell.", "You train and earn +5 strength 💪."],
-                  negative_msg: ["You've crossed the bridge, but the guardian, unhappy, shot you in the face.", "As he's visually impaired, he got your shield arm.",  "You lost 2 defense  🤢."],
+                  negative_msg: ["You've crossed the bridge, but the guardian, unhappy, shot you in the face.", "As he's visually impaired, he only got your shield arm.",  "You lost 2 defense 🤢."],
                   valid_choices: ['1', '3'],
                   consequence: { success: { strength: 5 }, failure: { defense: -2} }
                 },
                 grail: {
                   description: ["You've found 3 full cups 🏺.", "All doors are closed, and you understand that you need to drink from one of them.", " Which one will you choose?"],
-                  choices: ['The cup decorated with diamonds', 'The cup decorated with rubies', 'The simple cup'],
+                  choices: ["The cup decorated with diamonds.", "The cup decorated with rubies.", "The simple cup."],
                   positive_msg: ["The doors open, and you feel great.", "You've healed and earned 10 health points 🩹."],
                   negative_msg: ["The doors open, but you feel weak.", "You've lost 3 strength 🤢."],
                   valid_choices: ['2'],
@@ -103,7 +103,7 @@ class Game < ApplicationRecord
 
   private
     def create_rooms
-      rooms_content = (MONSTERS + BOSS + CHOICE + TREASURES + EMPTY).shuffle # Shuffle 15 non starting rooms
+      rooms_content = design_balanced_rooms
       rooms_content.each { |content| rooms.create(encounter: content, visited: false) } # Create them
       rooms.create(encounter: "Hero", visited: false) # Populate last room with hero
     end
@@ -114,6 +114,15 @@ class Game < ApplicationRecord
 
     def sorted_board(rooms)
       rooms.sort_by { |room| room.id }
+    end
+
+    def design_balanced_rooms
+      result = []
+      loop do
+        result = (MONSTERS + BOSS + CHOICE + TREASURES + EMPTY).shuffle # Shuffle 15 non starting rooms
+        break unless result.each_slice(4).to_a[0, 3].any? { |arr| arr.uniq.size == 1 } # Recreate rooms if line 1, 2, or 3 has no encounter at all.
+      end
+      result
     end
 
     def max_games_number

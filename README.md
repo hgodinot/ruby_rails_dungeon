@@ -2,14 +2,12 @@
   <img src="/screenshots/title.png">
 </p>
 
-# Deep Sea Adventures - Scoring App
+# Ruby & Rails Dungeon App
 
 [![Build Status](https://travis-ci.com/jsiny/deep_sea_adventure.svg?branch=master)](https://travis-ci.com/jsiny/deep_sea_adventure) [![Coverage Status](https://coveralls.io/repos/github/jsiny/deep_sea_adventure/badge.svg?branch=master)](https://coveralls.io/github/jsiny/deep_sea_adventure?branch=master)
 
-This [website](https://deep-sea-adventure.herokuapp.com/) is a **scoring tool**
-dedicated to the board game
-[Deep Sea Adventure](https://oinkgms.com/en/deep-sea-adventure) edited by
-[Oink Games](https://oinkgms.com/en/).
+This [website](https://ruby-and-rails-dungeon.herokuapp.com/) is a portfolio app, as
+well as an homage to old school hack and slash dungeon crawler video games.
 
 Its goal is to provide players a **reliable way to compute the oxygen decrease**
 during a round. It's meant to be used side by side with the board game,
