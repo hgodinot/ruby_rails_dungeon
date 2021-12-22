@@ -12,7 +12,8 @@
   <p align="center">
     <img src="app/assets/images/article-title.png">
   </p>
-  <br><br>
+  <br>
+
   ## How To Play
 
   The game start with a title card that explains the rules.
