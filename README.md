@@ -12,7 +12,6 @@
   <p align="center">
     <img src="app/assets/images/article-title.png">
   </p>
-  <br>
 
   ## How To Play
 
