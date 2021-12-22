@@ -8,6 +8,10 @@
   This [application](https://ruby-rails-dungeon-app.herokuapp.com/) is a tribute to old school hack and slash dungeon crawler video games.
 
   Its goal is to provide players with a fun and fast game, but, most of all to challenge myself, and learn Rails the hard way. It's a Rails adaptation of RPG Command Line Interface games, with a full database, registered users, and several models, each with their unique attributes and specificities.
+
+  <p align="center">
+    <img src="app/assets/images/article-title.png">
+  </p>
   <br><br>
   ## How To Play
 
