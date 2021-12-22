@@ -2,7 +2,6 @@
   <p align="center">
     <img src="app/assets/images/title.png">
   </p>
-  <br>
 
   # Ruby & Rails Dungeon App
 
